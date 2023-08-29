@@ -1,0 +1,8 @@
+.BookingOption.active{
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 30px
+}
+.BookingOptions::-webkit-scrollbar{
+    display: none;
+}

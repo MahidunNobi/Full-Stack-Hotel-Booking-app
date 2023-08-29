@@ -1,0 +1,6 @@
+.footeritem li{
+    cursor: pointer;
+}
+.footeritem li:hover{
+    color: rgb(56, 56, 236);
+}

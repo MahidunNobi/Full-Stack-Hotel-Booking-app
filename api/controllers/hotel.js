@@ -1,0 +1,90 @@
+import Hotel from "../models/Hotel.js"
+
+export const getAllHotel = async(req, res, next)=>{      
+    const {limit, max, min, ...other} = req.query
+    
+    try {
+        const hotel = await Hotel.find({
+            ...other,
+             CheapestPrice:{
+                $gte: min || 1,
+                $lte: max || 999
+             }
+            })
+             .limit(limit)
+        res.status(200).json(hotel)
+
+    } catch (error) {
+        next(error)
+    }
+}
+export const getSingleHotel =  async(req, res, next)=>{      
+    const id = req.params.id
+    
+    try {
+        const hotel = await Hotel.findById(id)
+        res.status(200).json(hotel)
+
+    } catch (error) {
+        next(error)
+    }
+}
+export const createHotel = async(req, res, next)=>{   
+    try {
+        const savedHotel = await Hotel.create(req.body)
+        res.status(200).json(savedHotel)
+
+    } catch (error) {
+        next(error)
+    }
+}
+export const updateHotel = async(req, res, next)=>{      
+    const id = req.params.id
+    try {
+        const savedHotel = await Hotel.findByIdAndUpdate(id, req.body, {new: true})
+        res.status(200).json(savedHotel)
+
+    } catch (error) {
+        next(error)
+    }
+}
+export const deleteHotel = async(req, res, next)=>{      
+    const id = req.params.id
+    try {
+        const savedHotel = await Hotel.findByIdAndDelete(id)
+        res.status(200).json(savedHotel)
+
+    } catch (error) {
+       next(error)
+    }
+}
+export const countByCity = async (req, res, next)=>{      
+    const cities = req.query.cities.split(",")  
+    try {
+        const count = await Promise.all(cities.map(city => {
+            return Hotel.countDocuments({city:city})
+        }))
+        res.json(count)
+
+    } catch (error) {
+       next(error)
+    }
+}
+export const countByType = async (req, res, next)=>{      
+    
+    try {
+        const HotelCount = await Hotel.countDocuments({type: "hotel"})
+        const AppertmentCount = await Hotel.countDocuments({type: "appertment"})
+        const ResortCount = await Hotel.countDocuments({type: "resort"})
+        const MotelCount = await Hotel.countDocuments({type: "motel"})
+        res.json([
+            { type: "hotel", count: HotelCount } ,           
+            { type: "appertment", count: AppertmentCount } ,           
+            { type: "resort", count: ResortCount } ,           
+            { type: "motel", count: MotelCount }          
+        ])
+
+    } catch (error) {
+       next(error)
+    }
+}
