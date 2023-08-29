@@ -16,7 +16,6 @@ const HomeSearchBar = ({page}) => {
   const {DateRangeState, setDateRangeState, options, handleOptions, setDestination} = useSearch()
 
   const searchContext = useSearch()
-  console.log(searchContext);
 
   return (
     <div className="SearchBar md:flex justify-around items-center bg-white md:w-full w-[90%]  text-gray-400 py-3 border-2 border-orange-400 md:absolute md:bottom-[-25px] rounded-md space-y-6 md:space-y-0 p-6">

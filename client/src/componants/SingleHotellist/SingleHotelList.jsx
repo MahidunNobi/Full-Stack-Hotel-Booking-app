@@ -3,7 +3,7 @@ import {BiCheck} from "react-icons/bi"
 import { Link } from 'react-router-dom'
 
 const SingleHotelList = ({allData}) => {
-    console.log(allData);
+    // console.log(allData);
     const {
         _id,
         CheapestPrice,
@@ -17,8 +17,11 @@ const SingleHotelList = ({allData}) => {
         title,
         type
     } = allData
+    
   return (
-    <div className='flex border border-orange-300 rounded-lg p-3 mb-6'>
+     <div className='flex border border-orange-300 rounded-lg p-3 mb-6'>
+        { allData.photos ? 
+        <> 
         <div className="img w-[25%]  mr-3">
             <img 
             src={photos[0]}
@@ -68,6 +71,10 @@ const SingleHotelList = ({allData}) => {
                 </div>
             </div>
         </div>
+        </>
+        :
+        <h1 className="text-4xl text-gray-700"> Loading... </h1> 
+        }
         
     </div>
   )

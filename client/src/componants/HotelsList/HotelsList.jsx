@@ -4,7 +4,7 @@ import { useSearch } from '../../Context/SearchContext'
 
 const HotelsList = () => {
   const {data} = useSearch()
-  console.log(data);
+
   return (
     <div className='md:w-[68%]'>
       {data.length>=1 ?         
