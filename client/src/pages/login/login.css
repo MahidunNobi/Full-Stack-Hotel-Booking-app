@@ -1,0 +1,25 @@
+.formContainer{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    box-shadow: 0px 0px 14px 0px rgba(135,135,135,0.75);
+    text-align: center;
+}
+.formContainer input{
+    background-color: transparent;
+    outline: none;
+    margin: 5px 0;
+    border: 1px solid rgb(251, 173, 29);
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+.formContainer button{
+    background: orange;
+    color: white;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 10px 0;
+}

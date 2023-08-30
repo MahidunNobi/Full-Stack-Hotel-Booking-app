@@ -5,10 +5,11 @@ import {BiCheck} from "react-icons/bi"
 import {MdLocationOn} from "react-icons/md"
 import {AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose} from "react-icons/ai"
 import {GrClose} from "react-icons/gr"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import useFetch from "../../hooks/useFetch"
 import { useSearch } from "../../Context/SearchContext"
-
+import Hotelroom from "../../componants/HotelRooms/Hotelroom"
+import {useAuthContext} from "../../Context/AuthContext"
 
 const Hotel = () => {
   // const images = [    
@@ -33,6 +34,10 @@ const Hotel = () => {
   // ]
   const [imgNumber, setImgNumber] = useState(0)
   const [openImagePreview, setOpenImagePreview] = useState(false)
+  const [openRoom, setOpenRoom] = useState(false)
+
+  const {user} = useAuthContext()
+  
 
   const handleImgClick = (i)=>{
     setImgNumber(i);
@@ -73,6 +78,13 @@ const Hotel = () => {
     type
   } = data
 // console.log(data);
+const navigate = useNavigate()
+
+const handleReserveClick =()=>{
+  user ? 
+  setOpenRoom(true):
+  navigate("/login")
+}
 
 // Calculating day difference
 
@@ -125,7 +137,7 @@ const days = dayDifference(startDate, endDate)
                   </p>
             </div>
             <div className="btn">
-              <button className='bg-orange-500 text-white px-4 py-2 rounded-lg text-lg'> Reserve or Book Now </button>
+              <button onClick={handleReserveClick} className='bg-orange-500 text-white px-4 py-2 rounded-lg text-lg'> Reserve or Book Now </button>
             </div>
           </div>
           <div className="Photo-gallery grid-container">  
@@ -151,10 +163,11 @@ const days = dayDifference(startDate, endDate)
               <h1 className="text-3xl"> 
                 <span className="font-bold">${CheapestPrice * days * options.room} </span>({days} nights)
               </h1>
-              <button className='bg-orange-500 text-white px-4 py-2 rounded-lg text-lg'> Reserve or Book Now </button>
+              <button onClick={handleReserveClick} className='bg-orange-500 text-white px-4 py-2 rounded-lg text-lg'> Reserve or Book Now </button>
             </div>
           </div>
         </div>
+          { openRoom && <Hotelroom setOpenRoom={setOpenRoom} />}
       </div> 
       :
       <h1 className="text-4xl-text-gray-700">Loading...</h1>

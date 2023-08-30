@@ -39,7 +39,9 @@ const Footer = () => {
                     <li>Hotels</li>
                 </ul>
             </div>
-            <p className=' text-gray-200'> Copyright © 2023–2023 Mahidun Nobi™. All rights reserved. </p>
+            <p className=' text-gray-200'> 
+            Copyright © 2023–2023 Mahidun Nobi™. All rights reserved.
+            </p>
         </div>
     </div>
   )
