@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {useAuthContext} from "../Context/AuthContext"
+import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai"
+
 
 const Navbar = () => {
     const {user} = useAuthContext()    
+
+    const [logout, setLogout] = useState(false)
+
+    const {dispatch} = useAuthContext()
+
+    const handleLogout = ()=>{           
+            dispatch({type: "Logout"})      
+    }
     
   return (
     <div className='bg-orange-500'>
@@ -13,7 +23,15 @@ const Navbar = () => {
                     <Link to={"/"}>  MBooking </Link>
                 </h4>
             </div>
-           {user ? <p className="text-white"> {user.username} </p> :
+           {user ? 
+           <div className="text-white relative">
+                <button onClick={()=> setLogout(!logout)}> 
+                    {user.username} { logout ?  
+                    <AiFillCaretUp className='inline' /> : <AiFillCaretDown className='inline' />}
+                </button> 
+                { logout && <button onClick={handleLogout} className='bg-white text-orange-700 absolute left-0 top-[25px]  py-1 px-3 rounded-md'> Logout</button>}
+            </div> 
+           :
             <div className="btns text-orange-500">
                 <a href="#" className='bg-gray-200 px-3 py-1 mx-2 md:mx-4 rounded-sm'> Register </a>
                 <Link to="login" className='bg-gray-200 px-3 py-1 mx-2 md:mx-4 rounded-sm'> Login </Link>
