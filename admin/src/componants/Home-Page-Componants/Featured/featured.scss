@@ -1,0 +1,64 @@
+.featured{
+    box-shadow: 0px 1px 20px 0px rgba(135, 135, 135, 0.75);
+    padding: 15px;
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span{
+            color: #787878;
+        }
+
+    }
+    .percentageConteiner{
+        margin: 10px 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: gray;
+        .percentageDiv{
+            width: 150px;
+            margin: 10px 0;
+        }
+        .title{
+
+        }
+        .price{
+            font-size: 30px;
+            color: rgb(33, 33, 33);
+        }        
+    }
+    .summery{
+        display: flex;
+        justify-content: space-between;
+        color: gray;
+        .singleSum{
+            flex: 1;
+            text-align: center;
+            .rate{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+            }
+            &.target{
+                .rate{
+                    color: red;
+                }
+            }
+            &.lastWeek{
+                .rate{
+                    color: green;
+                }
+            }
+            &.lastMonth{
+                .rate{
+                    color: red;
+                }
+            }
+        }
+    }
+
+
+}

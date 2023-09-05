@@ -33,7 +33,7 @@ const Navbar = () => {
             </div> 
            :
             <div className="btns text-orange-500">
-                <a href="#" className='bg-gray-200 px-3 py-1 mx-2 md:mx-4 rounded-sm'> Register </a>
+                <Link to="register" className='bg-gray-200 px-3 py-1 mx-2 md:mx-4 rounded-sm'> Register </Link>
                 <Link to="login" className='bg-gray-200 px-3 py-1 mx-2 md:mx-4 rounded-sm'> Login </Link>
             </div>}
         </div>

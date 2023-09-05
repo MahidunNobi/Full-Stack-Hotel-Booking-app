@@ -1,0 +1,60 @@
+.app.dark{
+    background-color: #222;
+    color: rgb(156, 156, 156);
+    .navbar{
+        border-color: #515050;
+        .logo{
+            color: rgb(158, 158, 158);
+            border-color: #515050;
+        }
+        .input{
+            border-color: #515050;
+        }     
+    }
+    .sidebar{
+        border-color: #515050;
+
+    }
+    .table table tr{
+        border-color: #515050;
+        td{
+            .approved, .pending{
+                color: #fff;
+            }
+        }
+    }
+    .tableGrid {
+        color: rgb(156, 156, 156);
+        border-color: #515050;
+        .viewBtn, .deleteBtn{
+            color: gray;
+            border: none;
+        }
+        .status{
+            color: #bbbbbb;
+        }
+    }
+    input{
+        background-color: transparent;
+    }    
+        .profile{
+            color: white;
+            button{
+                color: rgb(156, 156, 156);
+                border-color: #515050;
+                background-color: rgb(255 255 255 / 14%);
+                &:hover{
+                    color: #fff;
+                }
+            }
+            .detailsItems{
+                h1{
+                    color: rgb(187, 184, 184) !important;
+                }
+                .detailsItem{
+                    color: rgb(156, 156, 156) !important;
+                }
+            }
+        }
+    
+}
