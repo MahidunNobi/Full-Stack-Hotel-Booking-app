@@ -3,75 +3,149 @@ export const userInputs = [
       id: 1,
       label: "Username",
       type: "text",
+      name: "username",
       placeholder: "john_doe",
     },
     {
       id: 2,
-      label: "Name and surname",
-      type: "text",
-      placeholder: "John Doe",
-    },
-    {
-      id: 3,
-      label: "Email",
-      type: "mail",
+      label: "E-mail",
+      type: "email",
+      name: "email",
       placeholder: "john_doe@gmail.com",
     },
     {
-      id: 4,
-      label: "Phone",
+      id: 3,
+      label: "Country",
       type: "text",
-      placeholder: "+1 234 567 89",
+      name: "country",
+      placeholder: "USA",
+    },
+    {
+      id: 4,
+      label: "City",
+      type: "text",
+      name: "city",
+      placeholder: "London",
     },
     {
       id: 5,
       label: "Password",
       type: "password",
+      name: "password",
+      placeholder: "@#$%jk@#12",
     },
     {
       id: 6,
+      label: "Mobile",
+      type: "text",
+      name: "Mobile",
+      placeholder: "+8801625915373",
+    }    
+  ];
+  export const hotelInputs = [
+    {
+      id: 1,
+      label: "Name",
+      type: "text",
+      name: "name",
+      placeholder: "Hotel Radission",
+    },
+    {
+      id: 2,
+      label: "Type",
+      type: "text",
+      name: "type",
+      placeholder: "hotel/resort/motel/vila",
+    },
+    {
+      id: 3,
       label: "Address",
       type: "text",
-      placeholder: "Elton St. 216 NewYork",
+      name: "address",
+      placeholder: "cal 12 st. mombai",
+    },
+    {
+      id: 4,
+      label: "City",
+      type: "text",
+      name: "city",
+      placeholder: "London",
+    },
+    {
+      id: 5,
+      label: "Distance from city",
+      type: "number",
+      name: "distance",
+      placeholder: "500m",
     },
     {
       id: 7,
-      label: "Country",
-      type: "text",
-      placeholder: "USA",
+      label: "Ratings",
+      type: "number",
+      name: "rating",
+      placeholder: "500m",
     },
-  ];
-  
-  export const productInputs = [
+
+    {
+      id: 8,
+      label: "Cheapest Price",
+      type: "text",
+      name: "CheapestPrice",
+      placeholder: "19",
+    }  ,
+    {
+      id: 9,
+      label: "Featured",
+      type: "checkbox",
+      name: "featured",
+      placeholder: "",
+    }  ,
+
+    {
+      id: 6,
+      label: "Title",
+      type: "text",
+      name: "title",
+      placeholder: "Best for Honny moons",
+    }    
+  ];  
+  export const roomInputs = [
     {
       id: 1,
       label: "Title",
       type: "text",
-      placeholder: "Apple Macbook Pro",
+      name: "title",
+      placeholder: "Supper Delux",
     },
     {
       id: 2,
-      label: "Description",
-      type: "text",
-      placeholder: "Description",
+      label: "Price",
+      type: "num",
+      name: "price",
+      placeholder: "89",
     },
     {
       id: 3,
-      label: "Category",
+      label: "Max People",
       type: "text",
-      placeholder: "Computers",
+      name: "maxPeople",
+      placeholder: "2",
     },
     {
       id: 4,
-      label: "Price",
+      label: "Description",
       type: "text",
-      placeholder: "100",
+      name: "desc",
+      placeholder: "e.g 2 Bed, 1 Bathroom, 1 Balcony",
     },
     {
       id: 5,
-      label: "Stock",
-      type: "text",
-      placeholder: "in stock",
+      label: "Room Numbers",
+      type: "number",
+      name: "roomNumbers",
+      placeholder: "701, 702, 703",
     },
-  ];
+      
+  ];  
+ 
   

@@ -4,8 +4,17 @@ import {BsFillSunFill} from "react-icons/bs"
 import {BiMoon, BiMenuAltRight} from "react-icons/bi"
 import {RiDashboardFill} from "react-icons/ri"
 import { Link } from "react-router-dom"
+import { useState } from "react"
+import { useAuthContext } from "../../../Context/AuthContext"
 
 const Navbar = ({dark, setDark}) => {
+
+  const [logout, setLogout] = useState(false)
+  const {dispatch} = useAuthContext()
+
+    const handleLogout = ()=>{           
+            dispatch({type: "Logout"})      
+    }
   return (
     <div className=' navbar border-b border-gray-300 flex'>
         <div className='logo md:w-[20%] border-r border-gray-300 p-4 text-orange-500'> 
@@ -44,8 +53,12 @@ const Navbar = ({dark, setDark}) => {
             <div className="menu cursor-pointer">
               <BiMenuAltRight className="text-3xl" />
             </div>
+            <div className="relative">
             <div className="profile h-[40px] w-[40px] overflow-hidden flex items-center rounded-full cursor-pointer">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHs-OcjJOoWkPZk3tEPzegLO34Jkt_hFkwe24hReoyURom3r69RHhSbA1k8aLxWg_38MA&usqp=CAU" alt="" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHs-OcjJOoWkPZk3tEPzegLO34Jkt_hFkwe24hReoyURom3r69RHhSbA1k8aLxWg_38MA&usqp=CAU" alt="" onClick={()=> setLogout(!logout)} />
+            </div>
+              { logout && <button onClick={handleLogout} className='bg-white text-orange-700 absolute left-[-20px] top-[50px]  py-1 px-3 rounded-md border border-gray-400'> Logout</button>}
+
             </div>
             <div className="setting cursor-pointer">
               <AiFillSetting className="text-2xl" />

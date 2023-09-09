@@ -6,13 +6,13 @@ import axios from "axios"
 
 
 const Login = () => {
-    const {loading, err, dispatch} = useAuthContext()    
+    const {user, dispatch, loading, err} = useAuthContext()        
 
-    const authData = useAuthContext()    
     const [credentials, setCredentials] = useState({
         username: null,
         password: null
     })
+
 
     const handleChange = async (e) => {
         setCredentials(prev=> {
@@ -27,10 +27,13 @@ const Login = () => {
         dispatch({type: "Login-Start"})   
         try {
             const res = await axios.post("http://localhost:5000/api/auth/login", credentials)
-            dispatch({type: "Login-Success", payload: res.data})
+            dispatch({type: "Login-Success", payload: res.data.details})
+            document.cookie = `accessToken=${res.data.token}`;
+            
             navigate("/")
         } catch (error) {            
             dispatch({type: "Login-Failure", payload: error.response.data})
+            
         }
     }
 
@@ -58,8 +61,8 @@ const Login = () => {
                 </p>}
                 <button disabled={loading} onClick={handleLogin}> Login</button>
 
-            </div>
-        </div>
+            </div> 
+         </div>
     </div>
   )
 }

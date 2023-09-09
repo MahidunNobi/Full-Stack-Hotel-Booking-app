@@ -9,7 +9,7 @@ import {
     countByType,
     getSingleHotelRooms
  } from "../controllers/hotel.js"
-import {verifyAdmin} from "../utils/verifyToken.js"
+import {verifyAdmin, verifyToken, verifyUser} from "../utils/verifyToken.js"
 
 const router = express.Router()
 
@@ -18,7 +18,7 @@ router.get("/", getAllHotel)
 // GET Single Hotel
 router.get("/find/:id", getSingleHotel)
 // GET Single Hotel Rooms
-router.get("/find/:id/rooms", getSingleHotelRooms)
+router.get("/find/:id/rooms", verifyToken, getSingleHotelRooms)
 
 // Create
 router.post("/", verifyAdmin, createHotel)

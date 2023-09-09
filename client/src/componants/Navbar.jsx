@@ -5,11 +5,9 @@ import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai"
 
 
 const Navbar = () => {
-    const {user} = useAuthContext()    
+    const {user, dispatch} = useAuthContext()    
 
     const [logout, setLogout] = useState(false)
-
-    const {dispatch} = useAuthContext()
 
     const handleLogout = ()=>{           
             dispatch({type: "Logout"})      

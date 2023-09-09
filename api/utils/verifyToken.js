@@ -16,11 +16,13 @@ export const verifyToken =(req, res, next) => {
   };
 
 export const verifyUser = (req, res, next) =>{
+    
     verifyToken(req, res, (err)=>{
         if(err){
             return next(err)
         }else{
-            if(req.user.id === req.params.id) {
+            
+            if(req.user.id === req.params.id || req.user.isAdmin) {
                 return next()
             }else{
                 return next(createError(403, "The id you provide at the params is not valid"))

@@ -9,8 +9,7 @@ export const userRegister = async(req, res, next)=>{
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         const user = await User.create({
-            username: req.body.username,
-            email: req.body.email,
+            ...req.body,
             password: hash
         })
         const {password, isAdmin, ...otherDetails} = user._doc
@@ -29,12 +28,13 @@ export const userLogin = async(req, res, next)=>{
         const token = jwt.sign({id: user._id, isAdmin: user.isAdmin}, process.env.JWT)
 
         const {password, isAdmin, ...otherDetails} = user._doc
+        
         res
         .cookie("accessToken", token, {
-            httpOnly: true
+          httpOnly: true,
         })
-        .status(201)
-        .json({...otherDetails})
+        .status(200)
+        .json({ details: { ...otherDetails }, isAdmin, token });
     } catch (error) {
         next(error)
     }

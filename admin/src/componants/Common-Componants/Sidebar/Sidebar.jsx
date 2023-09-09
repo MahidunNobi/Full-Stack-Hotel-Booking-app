@@ -29,14 +29,19 @@ const Sidebar = ({dark, setDark}) => {
           <div className="Lists">
             <span className="text-xs text-gray-500">LISTS</span>
             {/* ---------------Users---------- */}
-            <Link to="/user" className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <Link to="/users" className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <BsPerson className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Users</span>
             </Link>
             {/* ---------------Products---------- */}
-            <Link to={"/products"} className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <Link to={"/hotels"} className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <AiFillShop className='mr-2 text-2xl text-orange-500' />
-              <span className='text-gray-500'> Products</span>
+              <span className='text-gray-500'> Hotels</span>
+            </Link>
+            {/* ---------------Rooms---------- */}
+            <Link to={"/rooms"} className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+              <AiOutlineShoppingCart className='mr-2 text-2xl text-orange-500' />
+              <span className='text-gray-500'> Rooms</span>
             </Link>
             {/* ---------------Orders---------- */}
             <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
