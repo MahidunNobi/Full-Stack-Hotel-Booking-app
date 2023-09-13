@@ -12,10 +12,10 @@ const data = [
 
 
 
-const Chart = () => {
+const Chart = ({title}) => {
   return (
     <div className='charts'>
-      <h2 className="text-xl text-gray-500"> User Spanding (Last 6 months)</h2>
+      <h2 className="text-xl text-gray-500"> { title } (Last 6 months)</h2>
       <ResponsiveContainer width="100%" aspect={3/1}>
         <AreaChart
           width={500}

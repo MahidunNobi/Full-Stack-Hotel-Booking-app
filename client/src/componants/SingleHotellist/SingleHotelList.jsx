@@ -29,7 +29,7 @@ const SingleHotelList = ({allData}) => {
             />
         </div>
         <div className="Desc flex justify-between w-[75%] items-center">
-            <div className="TitleAndDesc">
+            <div className="TitleAndDesc w-[70%]">
                 <div className="Header flex justify-between w-full"> 
                     <Link to={_id} className='text-2xl hover:text-orange-500 cursor-pointer'> {name}</Link>
                     
@@ -46,7 +46,7 @@ const SingleHotelList = ({allData}) => {
                 <p className="font-bold">
                     {title}
                 </p>
-                <p>
+                <p className='max-h-[75px] overflow-hidden'>
                     {desc}
                 </p>
                 <p className='text-green-600 text-sm'> 

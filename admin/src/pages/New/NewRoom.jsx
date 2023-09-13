@@ -8,7 +8,7 @@ import useFetch from "../../Hooks/UseFetch"
 const NewHotel = ({inputs}) => {
   const [newRoomsData, setNewRoomsData] = useState({ })
   const navigate = useNavigate()
-  const handleChange = (e)=>{
+  const handleChange = (e)=>{  
     setNewRoomsData(prev => {
       return{
         ...prev,
@@ -16,41 +16,44 @@ const NewHotel = ({inputs}) => {
       }
     })
   }
+  const handleRoomNumbers =(e)=>{
+    let arr = []
+    const val = e.target.value.split(",").map(el => el.trim())    
+    const newRooms = val.map(el => {
+      el !== "" && arr.push({"number": el})
+    })
+    setNewRoomsData(prev => {
+      return{
+        ...prev,
+        [e.target.name]: arr
+      }
+    })  
+  }
   
   const handleSelect =(e)=>{
-    const hotels = Array.from(e.target.selectedOptions, option => option.value);
-    console.log(hotels);
+    const id = e.target.value;
+    setNewRoomsData(prev => {
+      return{
+        ...prev,
+        [e.target.name]: e.target.value
+      }
+    })
    }
   const handleSend = async(e)=>{
-    e.preventDefault()
-  
-    try {      
-        const list = await Promise.all(ImgesFile.map(async(img) => {
-            const ImgData = new FormData()
-            ImgData.append("file", img)
-            ImgData.append("upload_preset", "PresetN")
-            const imgUploadRes = await axios.post("https://api.cloudinary.com/v1_1/mahidunnobi/image/upload",ImgData)
-            const {url}  = imgUploadRes.data    
-            return url    
-          }))      
-        
-        const newRooms = {
-          ...newRoomsData,
-          photos: list
-        }      
-      
-    
-      const res = await axios.post("/api/Roomss", newRooms)
-    navigate("/Roomss")
+    e.preventDefault()  
+    try {              
+      const res = await axios.post(`/api/rooms/${newRoomsData.hotels}`, newRoomsData)
+      navigate("/rooms")
     } catch (error) {
       console.log(error.response.data);
     }
     
   }
 
+  
+
  const {data, loading, error} = useFetch("/api/hotels")
 
- console.log(data);
   return (
     <div className='new w-[80%]'>
       <h2> Add New Rooms</h2>
@@ -60,13 +63,14 @@ const NewHotel = ({inputs}) => {
             {inputs.map((input, i)=> (
               <div key={i} className="singleInput">               
                 <label htmlFor=""> {input.label}</label>
-                <input onChange={handleChange} type={input.type} name={input.name} placeholder={input.placeholder} />
+                <input onChange={ input.name === "roomNumbers" ? handleRoomNumbers : handleChange} type={input.type} name={input.name} placeholder={input.placeholder} />
             </div>
               ))}              
 
               <div className="singleInput">
                 <label htmlFor=""> Hotels:</label> <br />
                 <select onChange={handleSelect} name="hotels" id="hotels" className="">
+                  <option value="">None</option>
                   { data ? data.map(hotel => <option key={hotel._id} value={hotel._id}> {hotel.name}</option>) : "loading"}
                 </select>
               </div>

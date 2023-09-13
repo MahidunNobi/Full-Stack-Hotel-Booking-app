@@ -6,7 +6,9 @@ import Login from "./pages/Login/Login"
 import NewUser from "./pages/New/NewUser"
 import NewHotel from "./pages/New/NewHotel"
 import NewRoom from "./pages/New/NewRoom"
-import Single from "./pages/Single/Single"
+import SingleUser from "./pages/Single/SingleUser"
+import SingleHotel from "./pages/Single/SingleHotel"
+import SingleRoom from "./pages/Single/SingleRoom"
 import MainLayout from './layouts/MainLayout'
 import { roomInputs,hotelInputs, userInputs } from './formSource'
 import "./style/dark.scss"
@@ -36,17 +38,17 @@ function App() {
         <Route index element={<Home />} />         
         <Route path='users'>
           <Route index element={<List page="user" />} />
-          <Route path=':id' element={<Single/>} />
+          <Route path=':id' element={<SingleUser/>} />
           <Route path='new' element={<NewUser inputs={userInputs} title={"Add New User"} />} />
         </Route>
         <Route path='hotels'>
           <Route index element={<List page="hotels" />} />
-          <Route path=':id' element={<Single/>} />
+          <Route path=':id' element={<SingleHotel/>} />
           <Route path='new' element={<NewHotel inputs={hotelInputs} title={"Add New Product"} />} />
         </Route>
         <Route path='rooms'>
           <Route index element={<List page="rooms" />} />
-          <Route path=':id' element={<Single/>} />
+          <Route path=':id' element={<SingleRoom/>} />
           <Route path='new' element={<NewRoom inputs={roomInputs} title={"Add New Product"} />} />
         </Route>
       </Route>

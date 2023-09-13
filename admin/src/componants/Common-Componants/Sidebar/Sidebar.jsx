@@ -7,10 +7,15 @@ import {MdHealthAndSafety} from "react-icons/md"
 import {SiLogstash} from "react-icons/si"
 import  {BiLogOut, BiCheck} from "react-icons/bi"
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../../../Context/AuthContext'
 
 
 const Sidebar = ({dark, setDark}) => {
+  const {dispatch} = useAuthContext()
 
+  const handleLogout = ()=>{           
+          dispatch({type: "Logout"})      
+  }
   return (
     <div className='w-[20%]'>
       <div className=' sidebar h-full hidden md:block md:w-[100%] border border-gray-300'>
@@ -18,15 +23,15 @@ const Sidebar = ({dark, setDark}) => {
 
         <div className=' p-4 '>
           {/* ------------Main---------------- */}
-          <div className="main">
+          <ul className="main">
             <span className="text-xs text-gray-500">MAIN</span>
             <Link to="/" className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <MdOutlineSpaceDashboard className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Dashboard</span>
             </Link>
-          </div>
+          </ul>
           {/* ------------Lists---------------- */}
-          <div className="Lists">
+          <ul className="Lists">
             <span className="text-xs text-gray-500">LISTS</span>
             {/* ---------------Users---------- */}
             <Link to="/users" className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
@@ -44,64 +49,66 @@ const Sidebar = ({dark, setDark}) => {
               <span className='text-gray-500'> Rooms</span>
             </Link>
             {/* ---------------Orders---------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <li className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <AiOutlineShoppingCart className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Order</span>
-            </div>
+            </li>
             {/* ---------------Delivery---------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <li className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <BsTruck className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Delivery</span>
-            </div>
+            </li>
 
-          </div>
+          </ul>
           {/* ------------Useful---------------- */}
-          <div className="usefull">
+          <ul className="usefull">
             <span className="text-xs text-gray-500">USEFUL</span>
             {/* ----------Stats---------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <li className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <ImStatsBars2 className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Stats</span>
-            </div>
+            </li>
             {/* ----------Notifications---------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <li className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <AiOutlineBell className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Notifications</span>
-            </div>
-          </div>
+            </li>
+          </ul>
           {/* ------------Services---------------- */}
-          <div className="Services">
+          <ul className="Services">
             <span className="text-xs text-gray-500">SERVICE</span>
             {/* ----------System Health---------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <li className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <MdHealthAndSafety className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> System Health</span>
-            </div>
+            </li>
             {/* ----------Logs---------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <li className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <SiLogstash className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Logs</span>
-            </div>
+            </li>
             {/* ----------Settings---------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <li className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <AiFillSetting className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Setting</span>
-            </div>
-          </div>
+            </li>
+          </ul>
           {/* ------------User---------------- */}
-          <div className="user">
+          <ul className="user">
             <span className="text-xs text-gray-500">USER</span>
             {/* ------------Profile---------------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
+            <li className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
               <ImProfile className='mr-2 text-2xl text-orange-500' />
               <span className='text-gray-500'> Profile</span>
-            </div>
+            </li>
             {/* ------------LogOut---------------- */}
-            <div className='pl-2 flex items-center cursor-pointer hover:bg-gray-200 p-2'>
-              <BiLogOut className='mr-2 text-2xl text-orange-500' />
-              <span className='text-gray-500'> Logout</span>
-            </div>
-          </div>
+            <li className='pl-2  cursor-pointer hover:bg-gray-200 p-2'>
+              <button onClick={handleLogout} className='flex items-center w-full'>
+                <BiLogOut className='mr-2 text-2xl text-orange-500' />
+                <span className='text-gray-500'> Logout</span>
+              </button>
+            </li>
+          </ul>
         </div>
 
         <div className=' px-4 mb-2'>

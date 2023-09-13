@@ -141,7 +141,7 @@ export const userInputs = [
     {
       id: 5,
       label: "Room Numbers",
-      type: "number",
+      type: "text",
       name: "roomNumbers",
       placeholder: "701, 702, 703",
     },

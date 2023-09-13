@@ -10,6 +10,7 @@ import axios from 'axios';
 const List = ({page}) => {
      
   const path = useLocation().pathname.split("/")[1]
+  console.log(path)
   const {data, loading, error}=useFetch(`/api/${path}`) 
   const [columns, setColumns] = useState(RoomsColumns)
   useEffect(()=>{
@@ -44,7 +45,7 @@ const List = ({page}) => {
     {field: "action", headerName: "Action", width: 200, renderCell: ({row})=>{      
       return (
         <div className="cellAction">
-          <Link to={"id"} className='viewBtn'> View</Link>
+          <Link to={row._id} className='viewBtn'> View</Link>
           <button onClick={() => handleDelete(row._id)} className='deleteBtn'> Delete</button>
         </div>
       )
@@ -63,7 +64,7 @@ const List = ({page}) => {
       <DataGrid
       className='tableGrid'
         rows={list}
-        columns={columns.concat(actionColumn)}
+        columns={path === "rooms" ? columns : columns.concat(actionColumn)}
         getRowId={row => row._id}
         initialState={{
           pagination: {

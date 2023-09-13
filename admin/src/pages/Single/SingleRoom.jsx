@@ -38,7 +38,7 @@ const Single = () => {
           </div>
         </div>
         <div className="chart">
-          <Chart />
+          <Chart title="User Spending" />
         </div>
       </div>
       <div className="singlePageList">
