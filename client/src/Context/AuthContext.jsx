@@ -7,7 +7,8 @@ const AuthContextProvider = ({children})=>{
     const innitialState = {
         user: JSON.parse(localStorage.getItem("user")) || null,
         loading: false,
-        err: null
+        err: null,
+        lastLink: null
     }
     const [state, dispatch] = useReducer(AuthReducer, innitialState)
 

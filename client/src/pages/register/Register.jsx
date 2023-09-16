@@ -6,7 +6,8 @@ import axios from "axios"
 
 
 const Register = () => {
-    const {loading, err, dispatch} = useAuthContext()    
+    const {loading, err, dispatch} = useAuthContext() 
+    const [img, setImg]    = useState(null)
    
     const [credentials, setCredentials] = useState({
         username: null,
@@ -36,12 +37,37 @@ const Register = () => {
             dispatch({type: "Register-Failure", payload: error.response.data})
         }
     }
-    console.log(credentials);
+    // console.log(credentials);
+    const habdleFileChange = (e)=>{
+        setImg(e.target.files[0])
+    }
+    console.log(img);
   return (
     <div>
         <div className="container mx-auto px-6 py-6 flex justify-center h-[60vh] items-center">
-            <div className='formContainer'>
+            <form className='formContainer'>
                 <h2 className="text-2xl mb-6"> Register</h2>
+                <div className="img flex flex-col items-center space-y-2">
+                    <img 
+                    className="w-[80px] rounded-full overflow-hidden"
+                    src={
+                        img?
+                        URL.createObjectURL(img) 
+                        :
+                        "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                    } 
+                    alt="" 
+                    />
+                    <label className="border border-orange-500 rounded-md text-orange-500 hover:text-white hover:bg-orange-500 duration-300 cursor-pointer px-2 py-1" htmlFor="image">Select Image</label>
+
+                    <input 
+                    type="file" 
+                    name="image" 
+                    id="image"
+                    className="hidden"
+                    onChange={habdleFileChange}
+                    />
+                </div>
                 <input 
                 type="text"
                 placeholder='Username'
@@ -68,7 +94,7 @@ const Register = () => {
                 </p>}
                 <button disabled={loading} onClick={handleRegister}> Register</button>
 
-            </div>
+            </form>
         </div>
     </div>
   )

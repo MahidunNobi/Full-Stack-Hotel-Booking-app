@@ -34,7 +34,18 @@ const AuthReducer = (state, action) =>{
                 user: null,
                 loading: false,
                 err: null
-            };    
+            };
+        case "Set-Last-Navigated-Link":
+            return{
+                ...state,
+                lastLink: action.payload
+            };
+        case "Clear-Last-Link":
+            return{
+                ...state,
+                lastLink: null,
+            };
+            
         default:
             return {...state}
     }

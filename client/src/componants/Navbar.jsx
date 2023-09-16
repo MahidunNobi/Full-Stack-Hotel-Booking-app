@@ -9,8 +9,10 @@ const Navbar = () => {
 
     const [logout, setLogout] = useState(false)
 
-    const handleLogout = ()=>{           
+    const handleLogout = ()=>{  
+                   
             dispatch({type: "Logout"})      
+            setLogout(false)
     }
     
   return (

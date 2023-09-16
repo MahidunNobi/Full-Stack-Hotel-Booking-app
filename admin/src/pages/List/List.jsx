@@ -10,8 +10,9 @@ import axios from 'axios';
 const List = ({page}) => {
      
   const path = useLocation().pathname.split("/")[1]
-  console.log(path)
+  
   const {data, loading, error}=useFetch(`/api/${path}`) 
+
   const [columns, setColumns] = useState(RoomsColumns)
   useEffect(()=>{
     if(path === "users"){

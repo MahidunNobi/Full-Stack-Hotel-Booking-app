@@ -8,9 +8,10 @@
 .grid-item {
     height: 195px;
     overflow: hidden;
+
 }
 .grid-item img:not(.grid-item:nth-child(3) img){
-    height: 100%;
+    width: 100%;
 }
 .grid-item:nth-child(2){
     grid-row: 2/3;

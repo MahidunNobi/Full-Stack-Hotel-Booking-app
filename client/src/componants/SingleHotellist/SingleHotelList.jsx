@@ -19,17 +19,17 @@ const SingleHotelList = ({allData}) => {
     } = allData
     
   return (
-     <div className='flex border border-orange-300 rounded-lg p-3 mb-6'>
+     <div className='md:flex md:items-center border border-orange-300 rounded-lg p-3 mb-6'>
         { allData.photos ? 
         <> 
-        <div className="img w-[25%]  mr-3">
-            <img 
+        <div className="img md:w-[30%]  mr-3 rounded-lg overflow-hidden">
+            <img             
             src={photos[0]}
             alt="" 
             />
         </div>
-        <div className="Desc flex justify-between w-[75%] items-center">
-            <div className="TitleAndDesc w-[70%]">
+        <div className="Desc md:flex md:justify-between md:w-[70%] md:items-center">
+            <div className="TitleAndDesc md:w-[70%]">
                 <div className="Header flex justify-between w-full"> 
                     <Link to={_id} className='text-2xl hover:text-orange-500 cursor-pointer'> {name}</Link>
                     

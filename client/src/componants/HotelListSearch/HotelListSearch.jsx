@@ -34,7 +34,7 @@ function handleSearchSubmit (){
 }
 
   return (
-    <div className='bg-orange-300 w-[31%] p-6 flex flex-col space-y-6 rounded-md h-max sticky top-10'>
+    <div className='bg-orange-300 md:w-[31%] p-6 flex flex-col space-y-6 rounded-md md:h-max md:sticky md:top-10 mb-6 md:mb-0'>
       <input 
       type="text" 
       name='search' 

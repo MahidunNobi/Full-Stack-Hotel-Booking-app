@@ -9,7 +9,15 @@ const List = () => {
   return (
     <div>
       <Header page="hotelsList"/>
-      <div className="searchAndHotelsList container mx-auto px-6 py-6 md:flex md:justify-between relative">
+      <div 
+      className="searchAndHotelsList 
+      container 
+      mx-auto 
+      px-6 
+      py-6 
+      md:flex 
+      md:justify-between 
+      relative">
         <HotelListSearch />
         <HotelsList />
       </div>

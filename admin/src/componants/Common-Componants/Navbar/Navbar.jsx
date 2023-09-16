@@ -49,7 +49,7 @@ const Navbar = ({dark, setDark}) => {
             </div>
             <div className="relative">
             <div className="profile h-[40px] w-[40px] overflow-hidden flex items-center rounded-full cursor-pointer">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHs-OcjJOoWkPZk3tEPzegLO34Jkt_hFkwe24hReoyURom3r69RHhSbA1k8aLxWg_38MA&usqp=CAU" alt="" onClick={()=> setLogout(!logout)} />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHs-OcjJOoWkPZk3tEPzegLO34Jkt_hFkwe24hReoyURom3r69RHhSbA1k8aLxWg_38MA&usqp=CAU" alt="" />
             </div>
               
 

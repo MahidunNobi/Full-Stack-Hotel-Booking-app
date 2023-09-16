@@ -4,8 +4,7 @@ export const UsersColumns = [
     field: "username",
     headerName: "User",
     width: 150,
-    renderCell: (params)=>{
-     
+    renderCell: (params)=>{     
       return (
         <div className="cellWithImg">
           <img 

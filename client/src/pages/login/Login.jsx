@@ -6,9 +6,8 @@ import axios from "axios"
 
 
 const Login = () => {
-    const {loading, err, dispatch} = useAuthContext()    
-
-    const authData = useAuthContext()    
+    const {loading, err, dispatch, lastLink} = useAuthContext()    
+   
     const [credentials, setCredentials] = useState({
         username: null,
         password: null
@@ -28,7 +27,15 @@ const Login = () => {
         try {
             const res = await axios.post("http://localhost:5000/api/auth/login", credentials)
             dispatch({type: "Login-Success", payload: res.data.details})
-            navigate("/")
+            document.cookie = `accessToken=${res.data.token}`;
+            if(lastLink) {
+                navigate(lastLink) 
+                dispatch({
+                    type: "Clear-Last-Link"
+                })
+            }else{
+                navigate("/")
+            }
         } catch (error) {            
             dispatch({type: "Login-Failure", payload: error.response.data})
         }

@@ -5,7 +5,7 @@ import {BiCheck} from "react-icons/bi"
 import {MdLocationOn} from "react-icons/md"
 import {AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose} from "react-icons/ai"
 import {GrClose} from "react-icons/gr"
-import { useNavigate, useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import useFetch from "../../hooks/useFetch"
 import { useSearch } from "../../Context/SearchContext"
 import Hotelroom from "../../componants/HotelRooms/Hotelroom"
@@ -36,8 +36,9 @@ const Hotel = () => {
   const [openImagePreview, setOpenImagePreview] = useState(false)
   const [openRoom, setOpenRoom] = useState(false)
 
-  const {user} = useAuthContext()
-  
+  const {user, dispatch, lastLink} = useAuthContext()  
+  const location = useLocation()
+  console.log(lastLink);
 
   const handleImgClick = (i)=>{
     setImgNumber(i);
@@ -81,9 +82,20 @@ const Hotel = () => {
 const navigate = useNavigate()
 
 const handleReserveClick =()=>{
-  user ? 
-  setOpenRoom(true):
-  navigate("/login")
+  if(user){
+    setOpenRoom(true)
+  }else{
+
+    dispatch({
+      type: "Set-Last-Navigated-Link",
+      payload: location.pathname
+    })
+    navigate("/login")
+    
+    
+  }
+ 
+  
 }
 
 // Calculating day difference
@@ -101,7 +113,7 @@ const days = dayDifference(startDate, endDate)
       <Header page={"hotelsList"} />
       { data.distance ? 
       <div>
-        { openImagePreview && <div className="imgPreviewer fixed top-0 w-full h-screen bg-[#1616165f] z-20 flex justify-center items-center">
+        { openImagePreview && <div className="imgPreviewer fixed top-0 w-full h-screen bg-[#161616a5] z-20 flex justify-center items-center">
           <AiOutlineClose className="absolute top-[20px] right-[20px] text-white text-xl hover:text-gray-300 cursor-pointer " onClick={()=> setOpenImagePreview(!openImagePreview)} />
           <AiOutlineArrowLeft onClick={()=> imgNumber > 0 && setImgNumber(imgNumber-1)} className=" text-white text-xl hover:text-gray-300 cursor-pointer mr-6"/>
           <div className="img w-[80%] overflow-hidden flex items-end">
