@@ -45,8 +45,23 @@ const NewUser = ({inputs, title}) => {
       const res = await axios.post("/api/auth/register", newUser) 
       navigate("/users")
     } catch (error) {
-      console.log(error);
-    }
+      const err = error.response.data
+
+      if(err.error){
+        if (err.error.message === "Unsupported source URL: undefined") {
+          alert("Please select a image of yourselft")
+        }        
+      }
+      else if(err.message === "Illegal arguments: object, string"){
+        alert("Please provide all the information")
+      }
+
+      else if(err.message){
+        alert("Username or Email is already exists. Please try another one...")
+      }
+
+        console.log(err);      
+      }
 
   }
  

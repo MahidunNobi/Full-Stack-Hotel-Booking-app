@@ -13,6 +13,7 @@ const List = ({page}) => {
   
   const {data, loading, error}=useFetch(`/api/${path}`) 
 
+
   const [columns, setColumns] = useState(RoomsColumns)
   useEffect(()=>{
     if(path === "users"){

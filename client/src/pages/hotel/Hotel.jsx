@@ -38,7 +38,7 @@ const Hotel = () => {
 
   const {user, dispatch, lastLink} = useAuthContext()  
   const location = useLocation()
-  console.log(lastLink);
+
 
   const handleImgClick = (i)=>{
     setImgNumber(i);

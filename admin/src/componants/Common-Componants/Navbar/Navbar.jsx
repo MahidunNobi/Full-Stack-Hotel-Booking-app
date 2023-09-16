@@ -8,10 +8,12 @@ import { useState } from "react"
 import { useAuthContext } from "../../../Context/AuthContext"
 
 const Navbar = ({dark, setDark}) => {
-  
+
+  const {user} = useAuthContext()
+    
   return (
     <div className=' navbar border-b border-gray-300 flex'>
-        <div className='logo md:w-[20%] border-r border-gray-300 p-4 text-orange-500'> 
+        <div className='logo md:w-[20%] border-gray-300 p-4 text-orange-500'> 
           <Link to={"/"} className='text-2xl'>Logo</Link>
         </div>
         <div className="otherOptions flex w-[80%] items-center justify-between px-6">
@@ -49,7 +51,7 @@ const Navbar = ({dark, setDark}) => {
             </div>
             <div className="relative">
             <div className="profile h-[40px] w-[40px] overflow-hidden flex items-center rounded-full cursor-pointer">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHs-OcjJOoWkPZk3tEPzegLO34Jkt_hFkwe24hReoyURom3r69RHhSbA1k8aLxWg_38MA&usqp=CAU" alt="" />
+              <img src={user ? user.img : "https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"} alt="" />
             </div>
               
 

@@ -9,11 +9,7 @@ const Register = () => {
     const {loading, err, dispatch} = useAuthContext() 
     const [img, setImg]    = useState(null)
    
-    const [credentials, setCredentials] = useState({
-        username: null,
-        email: null,
-        password: null
-    })
+    const [credentials, setCredentials] = useState({})
 
     const handleChange = (e)=>{
         setCredentials( prev => {
@@ -27,24 +23,38 @@ const Register = () => {
     const navigate = useNavigate()
     
     const handleRegister = async(e)=>{
-        e.preventDefault()     
-        dispatch({type: "Register-Start"})   
+        e.preventDefault()  
+        const ImgData = new FormData()
+        ImgData.append("file", img)
+        ImgData.append("upload_preset", "PresetN")
+        
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/Register", credentials)
-            dispatch({type: "Register-Success"})
+            const file = await axios.post("https://api.cloudinary.com/v1_1/mahidunnobi/image/upload", ImgData)
+            const {url} = file.data
+            const newUserData = {
+                ...credentials,
+                img:url
+            }   
+            const res = await axios.post("/api/auth/register", newUserData)
             navigate("/login")
-        } catch (error) {            
-            dispatch({type: "Register-Failure", payload: error.response.data})
+
+        } catch (err) {
+            console.log(err);
+        }       
+    }
+    
+    const habdleFileChange = (e)=>{
+        const file = e.target.files[0]
+        if(file.size >= 500000){
+            alert("File size can't more than 500KB")
+        }else{
+            setImg(e.target.files[0])            
         }
     }
-    // console.log(credentials);
-    const habdleFileChange = (e)=>{
-        setImg(e.target.files[0])
-    }
-    console.log(img);
+
   return (
     <div>
-        <div className="container mx-auto px-6 py-6 flex justify-center h-[60vh] items-center">
+        <div className="container mx-auto px-6 py-6 flex justify-center items-center">
             <form className='formContainer'>
                 <h2 className="text-2xl mb-6"> Register</h2>
                 <div className="img flex flex-col items-center space-y-2">
@@ -80,6 +90,27 @@ const Register = () => {
                 placeholder='E-mail'
                 name="email"
                 id="email"
+                onChange={handleChange}
+                />
+                <input 
+                type="text"
+                placeholder='Country'
+                name="country"
+                id="country"
+                onChange={handleChange}
+                />
+                <input 
+                type="text"
+                placeholder='City'
+                name="city"
+                id="city"
+                onChange={handleChange}
+                />
+                <input 
+                type="text"
+                placeholder='Mobile'
+                name="mobile"
+                id="mobile"
                 onChange={handleChange}
                 />
                 <input 
