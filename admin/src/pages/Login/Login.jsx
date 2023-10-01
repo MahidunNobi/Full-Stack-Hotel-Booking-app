@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <div>
-        <div className="container mx-auto px-6 py-6 flex justify-center h-[60vh] items-center">
+        <div className="container mx-auto px-6 py-6 flex justify-center min-h-screen items-center">
             <div className='formContainer'>
                 <h2 className="text-2xl mb-6"> Login</h2>
                 <input 

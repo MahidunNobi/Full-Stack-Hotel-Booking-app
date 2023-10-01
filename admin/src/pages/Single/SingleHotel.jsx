@@ -41,9 +41,6 @@ if(extraNum >=1){
     starsArray.push(<BsStar key={i+10} />)
   }
 }
-
-
-console.log(data);
   return (
     <div className="singlePage  w-[80%]">
       <div className="topbar hotel">

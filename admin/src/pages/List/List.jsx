@@ -13,6 +13,8 @@ const List = ({page}) => {
   
   const {data, loading, error}=useFetch(`/api/${path}`) 
 
+  
+
 
   const [columns, setColumns] = useState(RoomsColumns)
   useEffect(()=>{
@@ -24,6 +26,11 @@ const List = ({page}) => {
     }
     else if(path === "rooms"){
       setColumns(RoomsColumns)
+    }
+    if(error){
+      let message = error.response.data.message
+        console.log(error.response.data);
+        if(message) alert(message);
     }
   }, [path])
   
@@ -39,7 +46,9 @@ const List = ({page}) => {
       await axios.delete(`/api/${path}/${id}`)
       setList(prev => prev.filter(row => row._id !== id))
     } catch (error) {
+      let message = error.response.data.message
       console.log(error.response.data);
+      if(message) alert(message);
     }
   }
   
