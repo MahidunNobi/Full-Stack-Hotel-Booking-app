@@ -13,8 +13,7 @@ dotenv.config()
 
 
 // Middlewares
-app.use(cors({
-    origin: "*",
+app.use(cors({    
     credentials: true
 }))
 app.use(cookieParser())
