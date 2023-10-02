@@ -20,6 +20,10 @@ app.use(cors({
 app.use(cookieParser())
 app.use(express.json())
 
+app.get("/", (req, res)=>{
+    res.send("The API is ready to use...")
+})
+
 app.use("/api/auth", authRouter)
 app.use("/api/hotels", hotelsRouter)
 app.use("/api/rooms", roomsRouter)
