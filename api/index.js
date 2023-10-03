@@ -15,7 +15,7 @@ dotenv.config()
 
 // Middlewares
 app.use(cors({ 
-    origin: "https://eloquent-cupcake-b5986d.netlify.app",
+    origin: "https://dulcet-speculoos-3098b6.netlify.app",
     credentials: true
 }))
 app.use(
