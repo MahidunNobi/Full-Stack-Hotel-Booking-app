@@ -15,13 +15,13 @@ const router = express.Router()
 // })
 
 // GET All Users
-router.get("/", verifyAdmin, getAllUser)
+router.get("/", getAllUser)
 // GET Single Users
-router.get("/:id", verifyUser, getSingleUser)
+router.get("/:id", getSingleUser)
 // Update
-router.patch("/:id", verifyUser, updateUser)
+router.patch("/:id", updateUser)
 // Delete
-router.delete("/:id", verifyUser, deleteUser)
+router.delete("/:id", deleteUser)
 
 
 export default router;
