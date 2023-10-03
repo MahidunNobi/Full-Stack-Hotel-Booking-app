@@ -17,6 +17,16 @@ app.use(cors({
     origin: "https://eloquent-cupcake-b5986d.netlify.app",
     credentials: true
 }))
+app.use(
+    cookieSession({
+        name: "__session",
+        keys: ["key1"],
+        maxAge: 24 * 60 * 60 * 100,
+        secure: true,
+        httpOnly: true,
+        sameSite: 'none'
+      })
+);
 app.use(cookieParser())
 app.use(express.json())
 
