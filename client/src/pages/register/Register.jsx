@@ -35,7 +35,7 @@ const Register = () => {
                 ...credentials,
                 img:url
             }   
-            const res = await axios.post("/api/auth/register", newUserData)
+            const res = await axios.post("https://mbooking.onrender.com/api/auth/register", newUserData)
             navigate("/login")
 
         } catch (err) {

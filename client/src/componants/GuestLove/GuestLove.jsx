@@ -2,7 +2,7 @@ import React from 'react'
 import useFetch from "../../hooks/useFetch"
 
 const GuestLove = () => {
-  const {data, loading, err} = useFetch("/api/hotels?featured=true&limit=4")
+  const {data, loading, err} = useFetch("https://mbooking.onrender.com/api/hotels?featured=true&limit=4")
 
   return (
     <div className='my-6'>

@@ -24,7 +24,7 @@ data} = useSearch()
 const [openDate, setOpenDate] = useState(false)
 const [openOptions, setOpenOptions] = useState(false)
 
- const apiLink = `/api/hotels?${destination && `city=${destination}&`}min=${minimumPrice}&max=${maximumPrice}`
+ const apiLink = `https://mbooking.onrender.com/api/hotels?${destination && `city=${destination}&`}min=${minimumPrice}&max=${maximumPrice}`
 
 const { loading, err, reFetchData} = useFetch(apiLink)
 

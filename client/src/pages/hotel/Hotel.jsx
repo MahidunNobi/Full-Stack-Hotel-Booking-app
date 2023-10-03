@@ -61,7 +61,7 @@ const Hotel = () => {
   }
   // Backend Functionality
   const {id} = useParams()
-  const {data, loading, err} = useFetch(`/api/hotels/find/${id}`)
+  const {data, loading, err} = useFetch(`https://mbooking.onrender.com/api/hotels/find/${id}`)
 
   const {DateRangeState, options} = useSearch()  
   const {startDate, endDate} = DateRangeState[0]

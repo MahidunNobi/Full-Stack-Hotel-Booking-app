@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 
 
 const Tranding = () => {
-    const {data, loading, err} = useFetch("/api/hotels/countByCity?cities=Berlin,Madrid,London")
+    const {data, loading, err} = useFetch("https://mbooking.onrender.com/api/hotels/countByCity?cities=Berlin,Madrid,London")
 
   return (
     <div>

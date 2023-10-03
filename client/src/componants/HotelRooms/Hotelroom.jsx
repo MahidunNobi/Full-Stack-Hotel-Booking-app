@@ -35,7 +35,7 @@ const Hotelroom = ({setOpenRoom}) => {
 
     const fetchData =async()=>{
         try {
-            const res = await axios.get("/api/hotels/find/64e45197928fcdbde0ba0c63/rooms")            
+            const res = await axios.get("https://mbooking.onrender.com/api/hotels/find/64e45197928fcdbde0ba0c63/rooms")            
             setRooms(res.data)
         } catch (error) {
             console.log(error);
@@ -64,7 +64,7 @@ const Hotelroom = ({setOpenRoom}) => {
         setOpenRoom(false);
         try {
             await Promise.all(selectedRooms.map(roomId => {
-                const res = axios.patch(`http://localhost:5000/api/rooms/availability/${roomId}`, {dates: allDates})
+                const res = axios.patch(`https://mbooking.onrender.com/api/rooms/availability/${roomId}`, {dates: allDates})
                 console.log(" Unavailable Dates Updated");
                 return res.data
             }))
