@@ -33,8 +33,8 @@ export const userLogin = async(req, res, next)=>{
         .cookie("accessToken", token, {
           expires: new Date(Date.now() + (3600 * 1000 * 24 * 1)),
             httpOnly: true,
-            sameSite: "none",
-            secure: "false",
+            // sameSite: "none",
+            // secure: "false",
         })
         .status(200)
         .json({ details: { ...otherDetails }, isAdmin, token });
