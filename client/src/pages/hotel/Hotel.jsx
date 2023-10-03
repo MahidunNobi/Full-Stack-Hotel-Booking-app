@@ -182,7 +182,7 @@ const days = dayDifference(startDate, endDate)
           { openRoom && <Hotelroom setOpenRoom={setOpenRoom} />}
       </div> 
       :
-      <h1 className="container mx-auto text-4xl text-gray-700">Loading...</h1>
+      <h1 className="container mx-auto text-4xl text-gray-700 my-6">Loading...</h1>
       }
       
     </div>
