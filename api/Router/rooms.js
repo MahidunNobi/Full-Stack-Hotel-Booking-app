@@ -10,15 +10,15 @@ router.get("/", getAllRooms)
 router.get("/:id", getSingleRoom)
 
 // Create
-router.post("/:hotelId", verifyAdmin, createRoom)
+router.post("/:hotelId", createRoom)
 // Update
-router.patch("/:id", verifyAdmin, updateRoom)
+router.patch("/:id", updateRoom)
 
 // Update Availability
 router.patch("/availability/:id", updateRoomAvailability)
 
 // Delete
-router.delete("/:roomId/:hotelId", verifyAdmin, deletRoom)
+router.delete("/:roomId/:hotelId", deletRoom)
 
 
 export default router;
