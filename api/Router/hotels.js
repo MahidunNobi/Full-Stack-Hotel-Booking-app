@@ -18,14 +18,14 @@ router.get("/", getAllHotel)
 // GET Single Hotel
 router.get("/find/:id", getSingleHotel)
 // GET Single Hotel Rooms
-router.get("/find/:id/rooms", verifyToken, getSingleHotelRooms)
+router.get("/find/:id/rooms", getSingleHotelRooms)
 
 // Create
-router.post("/", verifyAdmin, createHotel)
+router.post("/", createHotel)
 // Update
-router.patch("/:id", verifyAdmin, updateHotel)
+router.patch("/:id", updateHotel)
 // Delete
-router.delete("/:id", verifyAdmin, deleteHotel)
+router.delete("/:id", deleteHotel)
 
 router.get("/countByCity", countByCity)
 router.get("/countByType", countByType)
