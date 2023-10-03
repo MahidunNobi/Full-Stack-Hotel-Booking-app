@@ -32,6 +32,7 @@ export const userLogin = async(req, res, next)=>{
         res
         .cookie("accessToken", token, {
           httpOnly: true,
+            SameSite:"None"
         })
         .status(200)
         .json({ details: { ...otherDetails }, isAdmin, token });
