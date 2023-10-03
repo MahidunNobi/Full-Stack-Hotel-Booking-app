@@ -13,7 +13,8 @@ dotenv.config()
 
 
 // Middlewares
-app.use(cors({    
+app.use(cors({ 
+    origin: "https://eloquent-cupcake-b5986d.netlify.app",
     credentials: true
 }))
 app.use(cookieParser())
