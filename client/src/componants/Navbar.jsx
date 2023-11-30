@@ -17,7 +17,7 @@ const Navbar = () => {
     
   return (
     <div className='bg-orange-500'>
-        <div className='bg-red-600 text-white text-xl flex gap-2 justify-center px-3'>
+        <div className='bg-red-600 text-white text-xl flex gap-2 justify-center px-3 font-semibold'>
             <h2> NOTE:</h2>
             <marquee behavior="scroll" direction="left">
             When you first come to this app you will see Loading.... some places of this app. It's because the backend API of this app takes a little time to load for the first time. Once It loads it will not spin anymore. So, Please be patient for the first load of the API's. We are extreamly sorry for this behavior🙏🙏. It'll be fixed as soon as possible.
