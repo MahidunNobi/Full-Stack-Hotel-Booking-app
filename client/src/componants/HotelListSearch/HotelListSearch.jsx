@@ -35,6 +35,14 @@ function handleSearchSubmit (){
 
   return (
     <div className='bg-orange-300 md:w-[31%] p-6 flex flex-col space-y-6 rounded-md md:h-max md:sticky md:top-10 mb-6 md:mb-0'>
+      <div className="demo text-gray-900 font-semibold">
+            <h2 className="text-2xl"> Hotels Available In:</h2>
+            <ul>              
+              <li> London </li>
+              <li> Madrid </li>
+              <li> Tokyo </li>
+            </ul>
+          </div>
       <input 
       type="text" 
       name='search' 
