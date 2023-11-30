@@ -48,6 +48,11 @@ const Login = () => {
         <div className="container mx-auto px-6 py-6 flex justify-center h-[60vh] items-center">
             <div className='formContainer'>
                 <h2 className="text-2xl mb-6"> Login</h2>
+                <div className="demo w-[300px] ">
+                    <h3 className="font-semibold text-lg">Demo Login:</h3>
+                    <p>Username: One</p>
+                    <p>Password: 321654</p>
+                </div>
                 <input 
                 type="text"
                 placeholder='Username'
