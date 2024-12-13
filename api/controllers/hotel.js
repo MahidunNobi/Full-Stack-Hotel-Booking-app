@@ -1,6 +1,6 @@
-import { connect } from "../index.js";
 import Hotel from "../models/Hotel.js";
 import Room from "../models/Rooms.js";
+import { connect } from "../utils/connectDB.js";
 
 export const getAllHotel = async (req, res, next) => {
   const { limit, max, min, ...other } = req.query;

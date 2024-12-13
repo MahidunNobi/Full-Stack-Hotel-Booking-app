@@ -8,6 +8,7 @@ import usersRouter from "./Router/user.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import cookieSession from "cookie-session";
+import { connect } from "./utils/connectDB.js";
 
 const app = express();
 dotenv.config();
@@ -49,15 +50,6 @@ app.use((err, req, res, next) => {
     err,
   });
 });
-
-export const connect = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("Connected to db");
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 const port = 5000;
 app.listen(port, async () => {
