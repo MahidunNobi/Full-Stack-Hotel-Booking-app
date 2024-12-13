@@ -16,7 +16,10 @@ dotenv.config();
 // Middlewares
 app.use(
   cors({
-    origin: "https://profound-yeot-a5eb43.netlify.app",
+    origin: [
+      "https://profound-yeot-a5eb43.netlify.app",
+      "http://localhost:5173",
+    ],
     credentials: true,
   })
 );
